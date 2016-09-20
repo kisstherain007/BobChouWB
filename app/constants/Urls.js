@@ -14,3 +14,6 @@ export const READ_friends = "/friendships/groups.json";
 
 // 获取当前登录用户及其所关注（授权）用户的最新微博
 export const public_timeline = "/statuses/public_timeline.json";
+
+// 获取当前登录用户及其所关注用户的最新微博
+export const friends_timeline = "/statuses/friends_timeline.json";

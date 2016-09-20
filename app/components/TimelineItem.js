@@ -8,9 +8,13 @@ import{
     TouchableOpacity,
     Image,
     StyleSheet,
-    Dimensions
+    Dimensions,
 } from 'react-native';
 import HTMLView from 'react-native-htmlview';
+import {formatTextString} from '../utils/FormatUtils';
+// import TimelineItemText from './TimelineItemText';
+// import HTML from 'react-native-fence-html';
+import ReactHtml from '../components/ReactHtml';
 
 const {width, height} = Dimensions.get('window');
 
@@ -21,11 +25,17 @@ const TimelineItem = ({rowData})=>(
             <Image style={{width:40, height:40, borderRadius: 60, marginLeft: 10, marginRight:10}}
                 source={{uri: rowData.user.avatar_hd}}/>
             <View style={styles.rightConentStyle}>
-                <View style={{flex:1, flexDirection: 'row', justifyContent:'space-between'}}>
+                <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
                     <Text style={{color: 'black', fontSize:13,  marginBottom: 5, fontWeight:'bold',}}>{rowData.user.name}</Text>
                     <Text style={{ fontSize:11, color: '#C1C1C1'}}>{rowData.created_at}</Text>
                 </View>
-                <Text style={{color:'#4F4F4F',}}>{rowData.text}</Text>
+                <Text style={{color:'#4F4F4F',}}>
+                    {rowData.text}
+                </Text>
+                <Text>
+                    {formatTextString(rowData.text)}
+                </Text>
+
                 {rowData.pic_urls.length > 0 ? <View style={{flexDirection:'row', flexWrap:'wrap'}}>
                     {picView(rowData)}
                 </View> : <View/>
@@ -37,11 +47,11 @@ const TimelineItem = ({rowData})=>(
                     />
                     <View style={{flexDirection:'row', alignItems: 'center'}}>
                         <Image style={styles.itemLittleImageStyle} source={require('../imgs/timeline_item_like_icon.png')}/>
-                        <Text style={styles.itemLittleTextStyle}>10</Text>
+                        <Text style={styles.itemLittleTextStyle}>{rowData.comments_count}</Text>
                         <Image style={styles.itemLittleImageStyle} source={require('../imgs/timeline_item_forward_icon.png')}/>
-                        <Text style={styles.itemLittleTextStyle}>10</Text>
+                        <Text style={styles.itemLittleTextStyle}>{rowData.reposts_count}</Text>
                         <Image style={styles.itemLittleImageStyle} source={require('../imgs/timeline_item_commented_icon.png')}/>
-                        <Text style={styles.itemLittleTextStyle}>10</Text>
+                        <Text style={styles.itemLittleTextStyle}>{rowData.comments_count}</Text>
                         <Image style={[styles.itemLittleImageStyle, {width:30, height:30}]} source={require('../imgs/timeline_more_button.png')}/>
                     </View>
                 </View>
@@ -98,6 +108,16 @@ var styles_html = StyleSheet.create({
         fontWeight: 'normal',
         color: '#C1C1C1', // pink links
         fontSize: 10
+    },
+})
+
+var styles_html_img = StyleSheet.create({
+    a: {
+        fontWeight: 'normal',
+        color: '#C1C1C1', // pink links
+        fontSize: 10,
+        width:200
+
     },
 })
 

@@ -16,7 +16,7 @@ export function getFriendsTimeline(){
 
     return dispatch =>{
 
-        return request(getFetchUrl(urls.public_timeline), 'get')
+        return request(getFetchUrl(urls.friends_timeline), 'get')
             .then((responseText)=> {
                 dispatch(fetchFriendsTimeline(responseText))
             })

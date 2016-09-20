@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.BV.LinearGradient.LinearGradientPackage;
+import com.view.WBTextViewManager;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -34,10 +35,25 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new LinearGradientPackage(),
-          new IntentReactPackage()
+              new MainReactPackage(),
+              new LinearGradientPackage(),
+              new IntentReactPackage(),
+              new ReactPackage() {
+                @Override
+                public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+                  return Collections.emptyList();
+                }
 
+                @Override
+                public List<Class<? extends JavaScriptModule>> createJSModules() {
+                  return Collections.emptyList();
+                }
+
+                @Override
+                public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+                  return Arrays.<ViewManager>asList(new WBTextViewManager());
+                }
+              }
       );
     }
   };

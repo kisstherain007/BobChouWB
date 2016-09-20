@@ -21,10 +21,10 @@ export function request(url, method, body){
         })
             .then((response) =>{
                 if(response.ok){
-                    console.log("---------request1:--------", response.json());
+                    console.log("---------request1:--------", "");
                     isOk = true;
                 } else {
-                    console.log("---------request2:--------", response.json());
+                    console.log("---------request2:--------", "");
                     isOk = false;
                 }
                 return response.json();

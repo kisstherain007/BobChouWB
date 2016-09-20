@@ -15,6 +15,7 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "react-native-htmlview": "0.5.0"
+    "react-native-htmlview": "0.5.0",
+    "react-native-html": "0.1.0"
   }
 }
