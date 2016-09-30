@@ -29,9 +29,9 @@ const TimelineItem = ({rowData})=>(
                     <Text style={{color: 'black', fontSize:13,  marginBottom: 5, fontWeight:'bold',}}>{rowData.user.name}</Text>
                     <Text style={{ fontSize:11, color: '#C1C1C1'}}>{rowData.created_at}</Text>
                 </View>
-                <Text style={{color:'#4F4F4F',}}>
-                    {rowData.text}
-                </Text>
+                {/*<Text style={{color:'#4F4F4F',}}>*/}
+                    {/*{rowData.text}*/}
+                {/*</Text>*/}
                 <Text>
                     {formatTextString(rowData.text)}
                 </Text>

@@ -47,17 +47,17 @@ export function formatTextString(content){
   let httpArr = [];
   // let userNameAr r = userNameRegExp.exec(content);
   // let themeTalkArr = themeTalkRegExp.exec(content);
-  var result;
+  let result;
   while((result = httpRegExp.exec(content)) != null){
+    console.log("httpArr element: " + result + " result lenght:" + (String(result)).length);
     httpArr.push(result);
   }
 
   if(httpArr != undefined){
     for(let i=0,len=httpArr.length; i<len; i++){
       let startLocation = content.indexOf(httpArr[i]);
-      let endLocation = content.indexOf(httpArr[i]) + httpArr[i].length;
-      let result = httpArr[i];
-      console.log("KKKKKK:", result);
+      let endLocation = startLocation + (String(httpArr[i])).length;
+      console.log("KKKKKK:", "startLocation:" + startLocation + " endLocation:" + endLocation);
       let tag = "http";
       const location = [startLocation, endLocation, tag];
       elementArr.push(location);
@@ -128,8 +128,6 @@ export function formatTextString(content){
         viewArr.push(
             <Text key={"text" + i}>
 
-              {content.substring(elementArr[i][1], startLocation)}
-
               {tag=='http'?
                   <Image key={tag + i + 'image'}
                       style={{width:60, height:15}}
@@ -163,4 +161,18 @@ export function fromatHtmlText(content){
   }
 
   return content;
+}
+
+function countCharacters(str){
+  var totalCount = 0;
+  for(var i=0; i<str.length; i++){
+    var c = str.charCodeAt(i);
+    if ((c >= 0x0001 && c <= 0x007e) || (0xff60<=c && c<=0xff9f)){
+      totalCount++;
+    }
+    else{
+      totalCount+=2;
+    }
+  }
+  return totalCount;
 }
