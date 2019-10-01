@@ -33,7 +33,8 @@ export default class Home extends Component{
         this.state = {
             selectedIndex: 0,
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
-            statuses: []
+            statuses: [],
+            onlyImageWH:[]
         };
     }
 
@@ -62,8 +63,9 @@ export default class Home extends Component{
     }
 
     _renderRow(rowData){
+
         return(
-            <TimelineItem rowData={rowData}/>
+            <TimelineItem rowData={rowData} />
         );
     }
     _renderSeperator(sectionID, rowID, adjacentRowHighlighted) {
@@ -79,7 +81,6 @@ export default class Home extends Component{
             </View>
         );
     }
-
 
     render(){
 

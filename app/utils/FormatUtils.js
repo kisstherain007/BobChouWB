@@ -15,6 +15,8 @@ import{
     Dimensions
 } from 'react-native';
 import {COLORS} from '../constants/Theme';
+import {toastShort} from '../utils/ToastUtils';
+import TouchableImage from '../components/TouchableImage';
 
 export function formatTextString(content){
 
@@ -112,10 +114,12 @@ export function formatTextString(content){
             <Text key={"text" + i}>
               {content.substring(0, startLocation)}
               {tag=='http'?
-              <Image key={tag + i + 'image'}
-                style={{width:60, height:15}}
-                source={require('../imgs/button_music.png')}
-                resizeMode={Image.resizeMode.contain}/>
+                  <Image
+                      key={'image'}
+                      style={{width:70, height:17.5}}
+                      source={require('../imgs/button_web.png')}
+                      resizeMode={Image.resizeMode.contain}
+                  />
                   :
               <Text style={{color: COLORS.WB_LIGHT_COLOR}}>
                 {content.substring(startLocation, endLocation)}
@@ -130,8 +134,8 @@ export function formatTextString(content){
 
               {tag=='http'?
                   <Image key={tag + i + 'image'}
-                      style={{width:60, height:15}}
-                      source={require('../imgs/button_music.png')}
+                      style={{width:70, height:17.5}}
+                      source={require('../imgs/button_web.png')}
                       resizeMode={Image.resizeMode.contain}/>
                   :
                   <Text style={{color: COLORS.WB_LIGHT_COLOR}}>
